@@ -10,85 +10,85 @@ part 'detailed_movie.g.dart';
 @JsonSerializable()  
 class DetailedMovie{  
   bool adult;
-  String backdropPath;
-  String? belongsToCollection;
+  String? backdrop_path ="";
+  String? belongs_to_collection ="";
   int budget;
   List<Genres> genres;
-  String homepage;
+  String? homepage ="";
   int id;
-  String imdbId;
-  String originalLanguage;
-  String originalTitle;
-  String overview;
-  int popularity;
-  String posterPath;
-  List<ProductionCompanies> productionCompanies;
-  List<ProductionCountries> productionCountries;
-  String releaseDate;
+  String? imdb_id ="";
+  String? original_language ="";
+  String? original_title ="";
+  String? overview;
+  double popularity;
+  String? poster_path ="";
+  List<ProductionCompanies> production_companies;
+  List<ProductionCountries> production_countries;
+  String release_date ="";
   int revenue;
   int runtime;
-  List<SpokenLanguages> spokenLanguages;
-  String status;
-  String tagline;
-  String title;
+  List<SpokenLanguages> spoken_languages;
+  String? status ="";
+  String? tagline ="";
+  String title ="";
   bool video;
-  int voteAverage;
-  int voteCount;
+  double vote_average;
+  int vote_count;
 
   DetailedMovie({
     required this.adult,
-    required this.backdropPath,
-    required this.belongsToCollection,
+    required this.backdrop_path,
+    required this.belongs_to_collection,
     required this.budget,
     required this.genres,
     required this.homepage,
     required this.id,
-    required this.imdbId,
-    required this.originalLanguage,
-    required this.originalTitle,
+    required this.imdb_id,
+    required this.original_language,
+    required this.original_title,
     required this.overview,
     required this.popularity,
-    required this.posterPath,
-    required this.productionCompanies,
-    required this.productionCountries,
-    required this.releaseDate,
+    required this.poster_path,
+    required this.production_companies,
+    required this.production_countries,
+    required this.release_date,
     required this.revenue,
     required this.runtime,
-    required this.spokenLanguages,
+    required this.spoken_languages,
     required this.status,
     required this.tagline,
     required this.title,
     required this.video,
-    required this.voteAverage,
-    required this.voteCount});
+    required this.vote_average,
+    required this.vote_count});
 
   factory DetailedMovie.createInitDetailedMovie(){
     return DetailedMovie(
       adult: false, 
-      backdropPath :"", 
-      belongsToCollection:null, 
+      backdrop_path :"", 
+      belongs_to_collection:"", 
       budget:0, 
       genres:[], 
       homepage:"", 
       id:0, 
-      imdbId:"", 
-      originalLanguage:"", 
-      originalTitle:"", 
+      imdb_id:"", 
+      original_language:"", 
+      original_title:"", 
       overview:"", 
       popularity:0, 
-      posterPath:"", 
-      productionCompanies:[], 
-      productionCountries:[], 
-      releaseDate:"", 
+      poster_path:"", 
+      production_companies:[], 
+      production_countries:[], 
+      release_date:"", 
       revenue:0, 
       runtime:0, 
-      spokenLanguages:[], 
+      spoken_languages:[], 
       status:"", 
       tagline:"", 
       title:"", 
       video:false, 
-      voteAverage:0, 
-      voteCount:0
+      vote_average:0, 
+      vote_count:0
       ); 
     }
   dynamic toJson() => _$DetailedMovieToJson(this);  

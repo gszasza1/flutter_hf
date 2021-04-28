@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:movier/actions/get_movie.action.dart';
 import 'package:movier/models/detailed_movie.dart';
 import 'package:movier/state/appstate.state.dart';
 import 'package:redux/redux.dart';
 
+@immutable
 class DetailedMovieSelector {
   final DetailedMovie detailedMovie;
   final Function getMovieById;
@@ -12,7 +14,7 @@ class DetailedMovieSelector {
     required this.getMovieById,
   });
 
-  static DetailedMovieSelector fromStore(Store<AppState> store) {
+  factory DetailedMovieSelector.fromStore(Store<AppState> store) {
     return DetailedMovieSelector(
       detailedMovie: store.state.getMovieState.detailedMovie,  
       getMovieById: (String id) {

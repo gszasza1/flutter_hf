@@ -9,66 +9,66 @@ part of 'detailed_movie.dart';
 DetailedMovie _$DetailedMovieFromJson(Map<String, dynamic> json) {
   return DetailedMovie(
     adult: json['adult'] as bool,
-    backdropPath: json['backdropPath'] as String,
-    belongsToCollection: json['belongsToCollection'] as String?,
+    backdrop_path: json['backdrop_path'] as String?,
+    belongs_to_collection: json['belongs_to_collection'] as String?,
     budget: json['budget'] as int,
     genres: (json['genres'] as List<dynamic>)
         .map((e) => Genres.fromJson(e as Map<String, dynamic>))
         .toList(),
-    homepage: json['homepage'] as String,
+    homepage: json['homepage'] as String?,
     id: json['id'] as int,
-    imdbId: json['imdbId'] as String,
-    originalLanguage: json['originalLanguage'] as String,
-    originalTitle: json['originalTitle'] as String,
-    overview: json['overview'] as String,
-    popularity: json['popularity'] as int,
-    posterPath: json['posterPath'] as String,
-    productionCompanies: (json['productionCompanies'] as List<dynamic>)
+    imdb_id: json['imdb_id'] as String?,
+    original_language: json['original_language'] as String?,
+    original_title: json['original_title'] as String?,
+    overview: json['overview'] as String?,
+    popularity: (json['popularity'] as num).toDouble(),
+    poster_path: json['poster_path'] as String?,
+    production_companies: (json['production_companies'] as List<dynamic>)
         .map((e) => ProductionCompanies.fromJson(e as Map<String, dynamic>))
         .toList(),
-    productionCountries: (json['productionCountries'] as List<dynamic>)
+    production_countries: (json['production_countries'] as List<dynamic>)
         .map((e) => ProductionCountries.fromJson(e as Map<String, dynamic>))
         .toList(),
-    releaseDate: json['releaseDate'] as String,
+    release_date: json['release_date'] as String,
     revenue: json['revenue'] as int,
     runtime: json['runtime'] as int,
-    spokenLanguages: (json['spokenLanguages'] as List<dynamic>)
+    spoken_languages: (json['spoken_languages'] as List<dynamic>)
         .map((e) => SpokenLanguages.fromJson(e as Map<String, dynamic>))
         .toList(),
-    status: json['status'] as String,
-    tagline: json['tagline'] as String,
+    status: json['status'] as String?,
+    tagline: json['tagline'] as String?,
     title: json['title'] as String,
     video: json['video'] as bool,
-    voteAverage: json['voteAverage'] as int,
-    voteCount: json['voteCount'] as int,
+    vote_average: (json['vote_average'] as num).toDouble(),
+    vote_count: json['vote_count'] as int,
   );
 }
 
 Map<String, dynamic> _$DetailedMovieToJson(DetailedMovie instance) =>
     <String, dynamic>{
       'adult': instance.adult,
-      'backdropPath': instance.backdropPath,
-      'belongsToCollection': instance.belongsToCollection,
+      'backdrop_path': instance.backdrop_path,
+      'belongs_to_collection': instance.belongs_to_collection,
       'budget': instance.budget,
       'genres': instance.genres,
       'homepage': instance.homepage,
       'id': instance.id,
-      'imdbId': instance.imdbId,
-      'originalLanguage': instance.originalLanguage,
-      'originalTitle': instance.originalTitle,
+      'imdb_id': instance.imdb_id,
+      'original_language': instance.original_language,
+      'original_title': instance.original_title,
       'overview': instance.overview,
       'popularity': instance.popularity,
-      'posterPath': instance.posterPath,
-      'productionCompanies': instance.productionCompanies,
-      'productionCountries': instance.productionCountries,
-      'releaseDate': instance.releaseDate,
+      'poster_path': instance.poster_path,
+      'production_companies': instance.production_companies,
+      'production_countries': instance.production_countries,
+      'release_date': instance.release_date,
       'revenue': instance.revenue,
       'runtime': instance.runtime,
-      'spokenLanguages': instance.spokenLanguages,
+      'spoken_languages': instance.spoken_languages,
       'status': instance.status,
       'tagline': instance.tagline,
       'title': instance.title,
       'video': instance.video,
-      'voteAverage': instance.voteAverage,
-      'voteCount': instance.voteCount,
+      'vote_average': instance.vote_average,
+      'vote_count': instance.vote_count,
     };

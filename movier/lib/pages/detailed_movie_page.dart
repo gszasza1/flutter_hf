@@ -11,7 +11,9 @@ class DetailedMovie extends StatelessWidget {
   Widget build(BuildContext context) {
    return StoreConnector<AppState, DetailedMovieSelector>(
       distinct: true,
-      converter: DetailedMovieSelector.fromStore,
+      converter: (store) => DetailedMovieSelector.fromStore(
+        store,
+      ),
       builder: (context, vm) {
          return StatefulWrapper(
       onInit: () {

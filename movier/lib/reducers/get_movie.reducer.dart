@@ -16,8 +16,10 @@ GetMovieState _loadMovieRequest(
 
 GetMovieState _loadMovieResponse(
   GetMovieState state,
-  GetMovieSuccessAction action)=>
-   state.copyWith(loading: false, error: "");
+  GetMovieSuccessAction action){
+  final newState = state.copyWith(loading: false, detailedMovie: action.detailedMovie, error: "");
+  return newState;
+}
 
 GetMovieState _loadMovieError(
   GetMovieState state,

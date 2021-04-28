@@ -8,7 +8,7 @@ part of 'production_countries.dart';
 
 ProductionCountries _$ProductionCountriesFromJson(Map<String, dynamic> json) {
   return ProductionCountries(
-    json['iso31661'] as String,
+    json['iso_3166_1'] as String?,
     json['name'] as String,
   );
 }
@@ -16,6 +16,6 @@ ProductionCountries _$ProductionCountriesFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ProductionCountriesToJson(
         ProductionCountries instance) =>
     <String, dynamic>{
-      'iso31661': instance.iso31661,
+      'iso_3166_1': instance.iso_3166_1,
       'name': instance.name,
     };

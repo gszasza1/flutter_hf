@@ -5,12 +5,12 @@ part "production_companies.g.dart";
 
 @JsonSerializable()  
 class ProductionCompanies {
-  String name;
+  String? name;
   int id;
-  String logoPath;
-  String originCountry;
+  String? logo_path;
+  String? origin_country;
 
-  ProductionCompanies(this.name, this.id, this.logoPath, this.originCountry);
+  ProductionCompanies(this.name, this.id, this.logo_path, this.origin_country);
   dynamic toJson() => _$ProductionCompaniesToJson(this);  
   factory ProductionCompanies.fromJson(Map<String, dynamic> obj) => _$ProductionCompaniesFromJson(obj);
 
