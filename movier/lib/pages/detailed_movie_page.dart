@@ -19,12 +19,22 @@ class DetailedMovie extends StatelessWidget {
       onInit: () {
         vm.getMovieById("1");
       },
-      child: 
-        Text(vm.detailedMovie.title,
+      child: Column(children: [
+            Image.network(show(vm)),
+                                   Text(
+              vm.detailedMovie.title,
               style: Theme.of(context).textTheme.headline4)
-          );
+         
+      ])
+      );
+       
       }
    );
   }
   
+}
+String show(DetailedMovieSelector vm){
+  var sajt = vm.detailedMovie.poster_path ?? "";
+  print(sajt);
+  return "https://picsum.photos/250?image=9";
 }
