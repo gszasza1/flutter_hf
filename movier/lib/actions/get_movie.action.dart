@@ -1,4 +1,3 @@
-
 import 'package:movier/models/detailed_movie.dart';
 
 class GetMovieAction {
@@ -6,26 +5,25 @@ class GetMovieAction {
 
   const GetMovieAction({required this.id});
 
-	@override
-	String toString() {
-	return 'GetMovieAction { }';
-	}
+  @override
+  String toString() {
+    return 'GetMovieAction { }';
+  }
 }
 
 class GetMovieSuccessAction {
-	final DetailedMovie detailedMovie;
+  final DetailedMovie detailedMovie;
 
-	GetMovieSuccessAction({required this.detailedMovie});
+  GetMovieSuccessAction({required this.detailedMovie});
 }
 
 class GetMovieFailedAction {
-	final String error;
+  final String error;
 
-	GetMovieFailedAction({required this.error});
+  GetMovieFailedAction({required this.error});
 
-	@override
-	String toString() {
-	return 'GetMovieFailedAction { error: $error }';
-	}
+  @override
+  String toString() {
+    return 'GetMovieFailedAction { error: $error }';
+  }
 }
-	

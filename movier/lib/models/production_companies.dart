@@ -1,9 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
-
 part "production_companies.g.dart";
 
-@JsonSerializable()  
+@JsonSerializable()
 class ProductionCompanies {
   String? name;
   int id;
@@ -11,7 +10,7 @@ class ProductionCompanies {
   String? origin_country;
 
   ProductionCompanies(this.name, this.id, this.logo_path, this.origin_country);
-  dynamic toJson() => _$ProductionCompaniesToJson(this);  
-  factory ProductionCompanies.fromJson(Map<String, dynamic> obj) => _$ProductionCompaniesFromJson(obj);
-
+  dynamic toJson() => _$ProductionCompaniesToJson(this);
+  factory ProductionCompanies.fromJson(Map<String, dynamic> obj) =>
+      _$ProductionCompaniesFromJson(obj);
 }

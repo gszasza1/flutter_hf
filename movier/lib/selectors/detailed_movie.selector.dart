@@ -16,9 +16,11 @@ class DetailedMovieSelector {
 
   factory DetailedMovieSelector.fromStore(Store<AppState> store) {
     return DetailedMovieSelector(
-      detailedMovie: store.state.getMovieState.detailedMovie,  
+      detailedMovie: store.state.getMovieState.detailedMovie,
       getMovieById: (String id) {
-        store.dispatch(GetMovieAction(id:id,));
+        store.dispatch(GetMovieAction(
+          id: id,
+        ));
       },
     );
   }
@@ -26,8 +28,7 @@ class DetailedMovieSelector {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DetailedMovieSelector &&
-          runtimeType == other.runtimeType;
+      other is DetailedMovieSelector && runtimeType == other.runtimeType;
 
   @override
   int get hashCode => detailedMovie.hashCode;
