@@ -18,19 +18,19 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.2
+  flipperkit_redux_middleware: ^0.0.4
+  flutter_redux: ^0.8.2
+  flutter_redux_dev_tools: ^0.5.1
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  flutter_redux: ^0.8.2
-  flipperkit_redux_middleware: ^0.0.4
-  flutter_redux_dev_tools: ^0.5.1
+  redux_saga: ^3.0.4
+  http: ^0.13.1
+  json_serializable: ^4.0.2
+  build_runner: ^1.11.5
 
 dev_dependencies:
   lint: ^1.0.0
