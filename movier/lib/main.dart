@@ -23,8 +23,6 @@ class Movier extends StatelessWidget {
           primarySwatch: Colors.green,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home:  Scaffold(
-          body:const DetailedMovie()
-          ),
+        home: Scaffold(body: const DetailedMovie()),
       ));
 }
