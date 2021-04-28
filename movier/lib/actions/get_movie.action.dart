@@ -1,10 +1,10 @@
 
-import 'package:flutter/material.dart';
+import 'package:movier/models/detailed_movie.dart';
 
 class GetMovieAction {
   final String id;
 
-  const GetMovieAction(this.id);
+  const GetMovieAction({required this.id});
 
 	@override
 	String toString() {
@@ -13,19 +13,15 @@ class GetMovieAction {
 }
 
 class GetMovieSuccessAction {
-	final int isSuccess;
+	final DetailedMovie detailedMovie;
 
-	GetMovieSuccessAction({@required this.isSuccess});
-	@override
-	String toString() {
-	return 'GetMovieSuccessAction { isSuccess: $isSuccess }';
-	}
+	GetMovieSuccessAction({required this.detailedMovie});
 }
 
 class GetMovieFailedAction {
 	final String error;
 
-	GetMovieFailedAction({@required this.error});
+	GetMovieFailedAction({required this.error});
 
 	@override
 	String toString() {

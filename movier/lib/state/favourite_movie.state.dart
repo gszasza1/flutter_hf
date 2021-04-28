@@ -10,7 +10,7 @@ class FavouriteMovieState {
 
 	factory FavouriteMovieState.initial() => const FavouriteMovieState(false, '');
 
-	FavouriteMovieState copyWith({bool loading, String error}) =>
+	FavouriteMovieState copyWith({bool? loading, String? error}) =>
 		FavouriteMovieState(loading ?? this.loading, error ?? this.error);
 
 	@override

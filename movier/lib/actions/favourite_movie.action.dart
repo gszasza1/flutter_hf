@@ -12,7 +12,7 @@ class FavouriteMovieAction {
 class FavouriteMovieSuccessAction {
 	final int isSuccess;
 
-	FavouriteMovieSuccessAction({@required this.isSuccess});
+	FavouriteMovieSuccessAction({required this.isSuccess});
 	@override
 	String toString() {
 	return 'FavouriteMovieSuccessAction { isSuccess: $isSuccess }';
@@ -22,7 +22,7 @@ class FavouriteMovieSuccessAction {
 class FavouriteMovieFailedAction {
 	final String error;
 
-	FavouriteMovieFailedAction({@required this.error});
+	FavouriteMovieFailedAction({required this.error});
 
 	@override
 	String toString() {

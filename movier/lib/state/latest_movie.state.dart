@@ -9,7 +9,7 @@ class LatestMovieState {
 
 	factory LatestMovieState.initial() => LatestMovieState(false, '');
 
-	LatestMovieState copyWith({bool loading, String error}) =>
+	LatestMovieState copyWith({bool? loading, String? error}) =>
 		LatestMovieState(loading ?? this.loading, error ?? this.error);
 
 	@override

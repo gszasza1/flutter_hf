@@ -12,7 +12,7 @@ class SearchMovieAction {
 class SearchMovieSuccessAction {
 	final int isSuccess;
 
-	SearchMovieSuccessAction({@required this.isSuccess});
+	SearchMovieSuccessAction({required this.isSuccess});
 	@override
 	String toString() {
 	return 'SearchMovieSuccessAction { isSuccess: $isSuccess }';
@@ -22,7 +22,7 @@ class SearchMovieSuccessAction {
 class SearchMovieFailedAction {
 	final String error;
 
-	SearchMovieFailedAction({@required this.error});
+	SearchMovieFailedAction({required this.error});
 
 	@override
 	String toString() {

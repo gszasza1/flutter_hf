@@ -35,33 +35,62 @@ class DetailedMovie{
   int voteAverage;
   int voteCount;
 
-  DetailedMovie(
-      this.adult,
-      this.backdropPath,
-      this.belongsToCollection,
-      this.budget,
-      this.genres,
-      this.homepage,
-      this.id,
-      this.imdbId,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.popularity,
-      this.posterPath,
-      this.productionCompanies,
-      this.productionCountries,
-      this.releaseDate,
-      this.revenue,
-      this.runtime,
-      this.spokenLanguages,
-      this.status,
-      this.tagline,
-      this.title,
-      this.video,
-      this.voteAverage,
-      this.voteCount);
-    
+  DetailedMovie({
+    required this.adult,
+    required this.backdropPath,
+    required this.belongsToCollection,
+    required this.budget,
+    required this.genres,
+    required this.homepage,
+    required this.id,
+    required this.imdbId,
+    required this.originalLanguage,
+    required this.originalTitle,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.productionCompanies,
+    required this.productionCountries,
+    required this.releaseDate,
+    required this.revenue,
+    required this.runtime,
+    required this.spokenLanguages,
+    required this.status,
+    required this.tagline,
+    required this.title,
+    required this.video,
+    required this.voteAverage,
+    required this.voteCount});
+
+  factory DetailedMovie.createInitDetailedMovie(){
+    return DetailedMovie(
+      adult: false, 
+      backdropPath :"", 
+      belongsToCollection:null, 
+      budget:0, 
+      genres:[], 
+      homepage:"", 
+      id:0, 
+      imdbId:"", 
+      originalLanguage:"", 
+      originalTitle:"", 
+      overview:"", 
+      popularity:0, 
+      posterPath:"", 
+      productionCompanies:[], 
+      productionCountries:[], 
+      releaseDate:"", 
+      revenue:0, 
+      runtime:0, 
+      spokenLanguages:[], 
+      status:"", 
+      tagline:"", 
+      title:"", 
+      video:false, 
+      voteAverage:0, 
+      voteCount:0
+      ); 
+    }
   dynamic toJson() => _$DetailedMovieToJson(this);  
   factory DetailedMovie.fromJson(Map<String, dynamic> obj) => _$DetailedMovieFromJson(obj);
 }

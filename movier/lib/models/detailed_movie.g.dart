@@ -8,39 +8,39 @@ part of 'detailed_movie.dart';
 
 DetailedMovie _$DetailedMovieFromJson(Map<String, dynamic> json) {
   return DetailedMovie(
-    json['adult'] as bool,
-    json['backdropPath'] as String,
-    json['belongsToCollection'] as String?,
-    json['budget'] as int,
-    (json['genres'] as List<dynamic>)
+    adult: json['adult'] as bool,
+    backdropPath: json['backdropPath'] as String,
+    belongsToCollection: json['belongsToCollection'] as String?,
+    budget: json['budget'] as int,
+    genres: (json['genres'] as List<dynamic>)
         .map((e) => Genres.fromJson(e as Map<String, dynamic>))
         .toList(),
-    json['homepage'] as String,
-    json['id'] as int,
-    json['imdbId'] as String,
-    json['originalLanguage'] as String,
-    json['originalTitle'] as String,
-    json['overview'] as String,
-    json['popularity'] as int,
-    json['posterPath'] as String,
-    (json['productionCompanies'] as List<dynamic>)
+    homepage: json['homepage'] as String,
+    id: json['id'] as int,
+    imdbId: json['imdbId'] as String,
+    originalLanguage: json['originalLanguage'] as String,
+    originalTitle: json['originalTitle'] as String,
+    overview: json['overview'] as String,
+    popularity: json['popularity'] as int,
+    posterPath: json['posterPath'] as String,
+    productionCompanies: (json['productionCompanies'] as List<dynamic>)
         .map((e) => ProductionCompanies.fromJson(e as Map<String, dynamic>))
         .toList(),
-    (json['productionCountries'] as List<dynamic>)
+    productionCountries: (json['productionCountries'] as List<dynamic>)
         .map((e) => ProductionCountries.fromJson(e as Map<String, dynamic>))
         .toList(),
-    json['releaseDate'] as String,
-    json['revenue'] as int,
-    json['runtime'] as int,
-    (json['spokenLanguages'] as List<dynamic>)
+    releaseDate: json['releaseDate'] as String,
+    revenue: json['revenue'] as int,
+    runtime: json['runtime'] as int,
+    spokenLanguages: (json['spokenLanguages'] as List<dynamic>)
         .map((e) => SpokenLanguages.fromJson(e as Map<String, dynamic>))
         .toList(),
-    json['status'] as String,
-    json['tagline'] as String,
-    json['title'] as String,
-    json['video'] as bool,
-    json['voteAverage'] as int,
-    json['voteCount'] as int,
+    status: json['status'] as String,
+    tagline: json['tagline'] as String,
+    title: json['title'] as String,
+    video: json['video'] as bool,
+    voteAverage: json['voteAverage'] as int,
+    voteCount: json['voteCount'] as int,
   );
 }
 

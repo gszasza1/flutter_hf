@@ -13,7 +13,7 @@ class ListItem {
 }
 
 class ListItemWidget extends StatelessWidget {
-  const ListItemWidget({Key key, this.listItem}) : super(key: key);
+  const ListItemWidget({Key? key, required this.listItem}) : super(key: key);
 
   final ListItem listItem;
   @override

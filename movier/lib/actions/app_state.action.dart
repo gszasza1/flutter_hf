@@ -12,7 +12,7 @@ class AppstateAction {
 class AppstateSuccessAction {
 	final int isSuccess;
 
-	AppstateSuccessAction({@required this.isSuccess});
+	AppstateSuccessAction({required this.isSuccess});
 	@override
 	String toString() {
 	return 'AppstateSuccessAction { isSuccess: $isSuccess }';
@@ -22,7 +22,7 @@ class AppstateSuccessAction {
 class AppstateFailedAction {
 	final String error;
 
-	AppstateFailedAction({@required this.error});
+	AppstateFailedAction({required this.error});
 
 	@override
 	String toString() {

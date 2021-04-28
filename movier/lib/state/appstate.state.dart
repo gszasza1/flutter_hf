@@ -12,9 +12,9 @@ class AppState {
 
  // ignore: avoid_positional_boolean_parameters
 	const AppState({
-     @required this.favouriteMovieState,
-     @required this.getMovieState,
-     @required this.latestMovieState,
+     required this.favouriteMovieState,
+     required this.getMovieState,
+     required this.latestMovieState,
   });
 
 	factory AppState.initial() => AppState(
@@ -24,9 +24,9 @@ class AppState {
   );
 
 	AppState copyWith({
-    LatestMovieState latestMovieState,
-    GetMovieState getMovieState,
-    FavouriteMovieState favouriteMovieState
+     LatestMovieState? latestMovieState,
+     GetMovieState? getMovieState,
+     FavouriteMovieState? favouriteMovieState
     }) =>
 		AppState(
       latestMovieState: latestMovieState ?? this.latestMovieState,

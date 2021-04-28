@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 
+import 'detailed_movie_page.dart';
+
 class HomePage extends StatefulWidget {
-  const HomePage({Key key, this.title}) : super(key: key);
+  const HomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -67,6 +69,7 @@ class _HomePageState extends State<HomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+           const DetailedMovie(),
            const Text(
               'You have pushed the button this many times:',
             ),
