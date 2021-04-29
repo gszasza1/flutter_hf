@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:movier/models/movie_list.dart';
 
 @immutable
 class LatestMovieState {
   final bool loading;
   final String error;
+  final MovieList movieList;
 
-  LatestMovieState(this.loading, this.error);
+  LatestMovieState(this.loading, this.error, this.movieList);
 
-  factory LatestMovieState.initial() => LatestMovieState(false, '');
+  factory LatestMovieState.initial() => LatestMovieState(false, '', MovieList.createInitMovieList());
 
-  LatestMovieState copyWith({bool? loading, String? error}) =>
-      LatestMovieState(loading ?? this.loading, error ?? this.error);
+  LatestMovieState copyWith({bool? loading, String? error, MovieList? movieList}) =>
+      LatestMovieState(loading ?? this.loading, error ?? this.error, movieList ?? this.movieList);
 
   @override
   bool operator ==(other) =>
@@ -22,7 +24,7 @@ class LatestMovieState {
 
   @override
   int get hashCode =>
-      super.hashCode ^ runtimeType.hashCode ^ loading.hashCode ^ error.hashCode;
+      super.hashCode ^ runtimeType.hashCode ^ loading.hashCode ^ error.hashCode ^ movieList.hashCode;
 
   @override
   String toString() => "MainListState { loading: $loading,  error: $error}";

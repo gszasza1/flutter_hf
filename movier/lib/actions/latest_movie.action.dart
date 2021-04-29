@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:movier/models/movie_list.dart';
 
 class LatestMovieAction {
   @override
@@ -8,12 +8,11 @@ class LatestMovieAction {
 }
 
 class LatestMovieSuccessAction {
-  final int isSuccess;
-
-  LatestMovieSuccessAction({required this.isSuccess});
+final MovieList movieList;
+  LatestMovieSuccessAction({required this.movieList});
   @override
   String toString() {
-    return 'LatestMovieSuccessAction { isSuccess: $isSuccess }';
+    return 'LatestMovieSuccessAction { isSuccess: $movieList }';
   }
 }
 
