@@ -15,6 +15,7 @@ GetMovieState _loadMovieResponse(
     GetMovieState state, GetMovieSuccessAction action) {
   final newState = state.copyWith(
       loading: false, detailedMovie: action.detailedMovie, error: "");
+  print(action.detailedMovie.title.toString());
   return newState;
 }
 

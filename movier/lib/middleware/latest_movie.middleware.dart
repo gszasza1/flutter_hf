@@ -12,8 +12,7 @@ getMovieList({dynamic action}) sync* {
     if (mockdata.value == null) {
       throw Exception(mockdata.toString());
     }
-    yield Put(
-        LatestMovieSuccessAction(movieList: mockdata.value as MovieList));
+    yield Put(LatestMovieSuccessAction(movieList: mockdata.value as MovieList));
   }, Catch: (e, s) sync* {
     yield Put(LatestMovieFailedAction(error: e.toString()));
   });
@@ -21,7 +20,7 @@ getMovieList({dynamic action}) sync* {
 
 // ignore: always_declare_return_types
 // ignore: type_annotate_public_apis
-getMovieSaga() sync* {
+getMovieListSaga() sync* {
   yield TakeEvery(getMovieList, pattern: LatestMovieAction);
 }
 

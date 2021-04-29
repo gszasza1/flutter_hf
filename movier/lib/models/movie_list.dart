@@ -15,10 +15,9 @@ class MovieList {
   MovieList(this.page, this.results, this.total_results, this.total_pages);
 
   dynamic toJson() => _$MovieListToJson(this);
-  factory MovieList.fromJson(Map<String, dynamic> obj) => _$MovieListFromJson(obj);
+  factory MovieList.fromJson(Map<String, dynamic> obj) =>
+      _$MovieListFromJson(obj);
   factory MovieList.createInitMovieList() {
-    return MovieList(
-        0,[],0,0
-        );
+    return MovieList(0, [], 0, 0);
   }
 }

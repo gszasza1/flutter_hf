@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movier/actions/get_movie.action.dart';
 import 'package:movier/actions/latest_movie.action.dart';
 import 'package:movier/models/movie_list.dart';
 import 'package:movier/state/appstate.state.dart';
@@ -10,7 +9,7 @@ class LatestMovieSelector {
   final MovieList movieList;
   final Function getLatestMovieList;
 
-  LatestMovieSelector({
+  const LatestMovieSelector({
     required this.movieList,
     required this.getLatestMovieList,
   });
@@ -18,7 +17,8 @@ class LatestMovieSelector {
   factory LatestMovieSelector.fromStore(Store<AppState> store) {
     return LatestMovieSelector(
       movieList: store.state.latestMovieState.movieList,
-      getLatestMovieList: (String id) {
+      getLatestMovieList: () {
+        print("sajt");
         store.dispatch(LatestMovieAction());
       },
     );

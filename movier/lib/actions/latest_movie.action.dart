@@ -8,7 +8,7 @@ class LatestMovieAction {
 }
 
 class LatestMovieSuccessAction {
-final MovieList movieList;
+  final MovieList movieList;
   LatestMovieSuccessAction({required this.movieList});
   @override
   String toString() {

@@ -26,11 +26,11 @@ class DetailedMovie extends StatelessWidget {
           vm.detailedMovie.poster_path!.isNotEmpty) {
         imageUrl =
             "https://api.themoviedb.org/3${vm.detailedMovie.poster_path}?api_key=${API_KEY}";
+      } else {
+        throw Exception("Empty image url");
       }
       return CachedNetworkImage(
-          imageUrl: imageUrl.isNotEmpty
-              ? imageUrl
-              : "https://imgflip.com/s/meme/Jackie-Chan-WTF.jpg",
+          imageUrl: imageUrl,
           placeholder: (context, url) => CircularProgressIndicator(),
           errorWidget: (context, url, error) => resolver,
           imageBuilder: (context, imageProvider) => Container(

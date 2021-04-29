@@ -36,7 +36,8 @@ class MovieResult {
       this.vote_count,
       this.video,
       this.vote_average);
-      
+
   dynamic toJson() => _$MovieResultToJson(this);
-  factory MovieResult.fromJson(Map<String, dynamic> obj) => _$MovieResultFromJson(obj);
+  factory MovieResult.fromJson(Map<String, dynamic> obj) =>
+      _$MovieResultFromJson(obj);
 }

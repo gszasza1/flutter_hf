@@ -8,13 +8,15 @@ final latestMovieReducer = combineReducers<LatestMovieState>([
   TypedReducer<LatestMovieState, LatestMovieFailedAction>(_loadMovieError),
 ]);
 
-LatestMovieState _loadMovieRequest(LatestMovieState state, LatestMovieAction action) =>
+LatestMovieState _loadMovieRequest(
+        LatestMovieState state, LatestMovieAction action) =>
     state.copyWith(loading: true, error: "");
 
 LatestMovieState _loadMovieResponse(
     LatestMovieState state, LatestMovieSuccessAction action) {
-  final newState = state.copyWith(
-      loading: false, movieList: action.movieList, error: "");
+  print(action.movieList.results.length);
+  print("+++++++++++++++++++++++++");
+  final newState = LatestMovieState(false, "", action.movieList);
   return newState;
 }
 

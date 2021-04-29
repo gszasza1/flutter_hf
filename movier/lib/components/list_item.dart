@@ -1,34 +1,46 @@
 import 'package:flutter/material.dart';
-
-class ListItem {
-  // class constructor
-  ListItem(
-      this.id, this.popularity, this.releaseDate, this.runTime, this.title);
-
-  // class fields
-  final int id;
-  final String title;
-  final String releaseDate;
-  final int popularity;
-  final int runTime;
-}
+import 'package:movier/models/movie_result.dart';
 
 class ListItemWidget extends StatelessWidget {
-  const ListItemWidget({Key? key, required this.listItem}) : super(key: key);
+  const ListItemWidget({Key? key, required this.movieResult}) : super(key: key);
 
-  final ListItem listItem;
+  final MovieResult movieResult;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Text(listItem.title),
-        Stack(
-          children: [
-            Text(listItem.releaseDate),
-            Text(listItem.runTime.toString()),
-          ],
-        )
-      ],
+    return Container(
+      padding: const EdgeInsets.only(bottom: 20,left: 10, right: 10, top: 20),
+      decoration: const BoxDecoration(
+        
+        border: Border(
+          bottom: BorderSide(width: 1.0, color: Color(0xFFFFF3F3F3)),
+        ),
+      ),
+      child: Column(
+        
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(movieResult.title,
+              textAlign: TextAlign.start,
+              overflow: TextOverflow.ellipsis,
+              style:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Container(
+              child: Row(
+            children: [
+              Expanded(child: Text(
+                movieResult.release_date,
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+              )),
+              Expanded(child: Text(
+                movieResult.popularity.toString(),
+                textAlign: TextAlign.end,
+                overflow: TextOverflow.ellipsis,
+              )),
+            ],
+          ))
+        ],
+      ),
     );
   }
 }
