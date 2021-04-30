@@ -7,8 +7,8 @@ import 'package:movier/selectors/detailed_movie.selector.dart';
 import 'package:movier/state/appstate.state.dart';
 
 class DetailedMovie extends StatelessWidget {
-  const DetailedMovie({Key? key}) : super(key: key);
-
+  const DetailedMovie({Key? key, required this.id}) : super(key: key);
+  final String id;
   CachedNetworkImage show(DetailedMovieSelector vm) {
     final resolver = CachedNetworkImage(
         imageUrl: "https://imgflip.com/s/meme/Jackie-Chan-WTF.jpg",
@@ -31,7 +31,7 @@ class DetailedMovie extends StatelessWidget {
       }
       return CachedNetworkImage(
           imageUrl: imageUrl,
-          placeholder: (context, url) => CircularProgressIndicator(),
+          placeholder: (context, url) => resolver,
           errorWidget: (context, url, error) => resolver,
           imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
@@ -68,7 +68,6 @@ class DetailedMovie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, DetailedMovieSelector>(
-        distinct: true,
         converter: (store) => DetailedMovieSelector.fromStore(
               store,
             ),
@@ -77,8 +76,9 @@ class DetailedMovie extends StatelessWidget {
               onInit: () {
                 vm.getMovieById("1");
               },
-              child: SingleChildScrollView(
-                  child: Column(
+              child: Scaffold(
+                  body: SingleChildScrollView(
+                      child: Column(
                 children: [
                   Container(
                       width: MediaQuery.of(context).size.width,
@@ -130,7 +130,7 @@ class DetailedMovie extends StatelessWidget {
                   createItem("Imdb Id", "${vm.detailedMovie.imdb_id}", context),
                   createItem("Status", "${vm.detailedMovie.status}", context),
                 ],
-              )));
+              ))));
         });
   }
 }

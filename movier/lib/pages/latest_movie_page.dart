@@ -17,19 +17,18 @@ class LatestMovie extends StatelessWidget {
         builder: (context, vm) {
           return StatefulWrapper(
               onInit: () {
-                print("kacsa");
                 return vm.getLatestMovieList();
               },
-              child: SingleChildScrollView(
-                  child: Column(children: [
+              child: Scaffold(
+                  body: SingleChildScrollView(
+                      child: Column(children: [
                 ListView(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     children: vm.movieList.results.map((e) {
-                      print(e.title);
                       return ListItemWidget(movieResult: e);
                     }).toList())
-              ])));
+              ]))));
         });
   }
 }

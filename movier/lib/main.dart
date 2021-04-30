@@ -3,11 +3,12 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movier/pages/detailed_movie_page.dart';
 import 'package:movier/pages/latest_movie_page.dart';
 import 'package:redux/redux.dart';
-import 'config/saga_config.dart';
-import 'pages/home-page.dart';
-import 'state/appstate.state.dart';
 
+import 'config/configure_web.dart' if(dart.library.html) 'config/configure_nonweb.dart';
+import 'config/saga_config.dart';
+import 'state/appstate.state.dart';
 void main() {
+  configureApp();
   runApp(Movier(store: configureStore()));
 }
 
@@ -24,6 +25,23 @@ class Movier extends StatelessWidget {
           primarySwatch: Colors.green,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: const Scaffold(body: const LatestMovie()),
+        onGenerateRoute: (settings) {
+          // Handle '/'
+          if (settings.name == '/') {
+            return MaterialPageRoute(builder: (context) => const LatestMovie());
+          }
+
+          // Handle '/details/:id'
+          final uri = Uri.parse(settings.name!);
+          if (uri.pathSegments.length == 2 &&
+              uri.pathSegments.first == 'movie') {
+            final id = uri.pathSegments[1];
+            return MaterialPageRoute(
+                builder: (context) => DetailedMovie(id: id));
+          }
+
+          return MaterialPageRoute(builder: (context) => const LatestMovie());
+        },
+        home: const LatestMovie(),
       ));
 }
