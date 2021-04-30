@@ -1,29 +1,33 @@
-import 'package:flutter/material.dart';
+import 'package:movier/models/detailed_movie.dart';
 
-class FavouriteMovieAction {
+class AddFavouriteMovieAction {
+  final DetailedMovie movie;
+
+  AddFavouriteMovieAction({required this.movie});
   @override
   String toString() {
-    return 'FavouriteMovieAction { }';
+    return 'AddFavouriteMovieAction { movie: $movie}';
   }
 }
 
-class FavouriteMovieSuccessAction {
-  final int isSuccess;
 
-  FavouriteMovieSuccessAction({required this.isSuccess});
+class DeleteFavouriteMovieAction {
+  final int id;
+
+  DeleteFavouriteMovieAction({required this.id});
   @override
   String toString() {
-    return 'FavouriteMovieSuccessAction { isSuccess: $isSuccess }';
+    return 'DeleteFavouriteMovieAction { id: $id }';
   }
 }
 
-class FavouriteMovieFailedAction {
-  final String error;
+class SearchFavouriteMovie {
+  final String searchText;
 
-  FavouriteMovieFailedAction({required this.error});
+  SearchFavouriteMovie({required this.searchText});
 
   @override
   String toString() {
-    return 'FavouriteMovieFailedAction { error: $error }';
+    return 'SearchFavouriteMovie { searchText: $searchText }';
   }
 }

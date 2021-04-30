@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movier/models/movie_list.dart';
 
 class SearchMovieAction {
+  final String searchText;
+  const SearchMovieAction(this.searchText);
   @override
   String toString() {
     return 'SearchMovieAction { }';
@@ -8,12 +11,12 @@ class SearchMovieAction {
 }
 
 class SearchMovieSuccessAction {
-  final int isSuccess;
+  final MovieList movieList;
 
-  SearchMovieSuccessAction({required this.isSuccess});
+  SearchMovieSuccessAction({required this.movieList});
   @override
   String toString() {
-    return 'SearchMovieSuccessAction { isSuccess: $isSuccess }';
+    return 'SearchMovieSuccessAction { movieList: $movieList }';
   }
 }
 

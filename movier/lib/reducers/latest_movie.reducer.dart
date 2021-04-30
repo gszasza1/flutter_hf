@@ -15,8 +15,6 @@ LatestMovieState _loadMovieRequest(
 
 LatestMovieState _loadMovieResponse(
     LatestMovieState state, LatestMovieSuccessAction action) {
-  print(action.movieList.results.length);
-  print("+++++++++++++++++++++++++");
   final newState =
       state.copyWith(loading: false, error: "", movieList: action.movieList);
   return newState;

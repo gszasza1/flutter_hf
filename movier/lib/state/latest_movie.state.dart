@@ -8,7 +8,12 @@ class LatestMovieState {
   final MovieList movieList;
   final String searchText;
 
-  LatestMovieState(this.loading, this.error, this.movieList, this.searchText);
+  const LatestMovieState(
+      // ignore: avoid_positional_boolean_parameters
+      this.loading,
+      this.error,
+      this.movieList,
+      this.searchText);
 
   factory LatestMovieState.initial() =>
       LatestMovieState(false, '', MovieList.createInitMovieList(), "");
@@ -22,7 +27,7 @@ class LatestMovieState {
           movieList ?? this.movieList, searchText ?? this.searchText);
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       identical(this, other) ||
       other is LatestMovieState &&
           runtimeType == other.runtimeType &&

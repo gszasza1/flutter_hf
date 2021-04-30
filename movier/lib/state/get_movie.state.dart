@@ -8,7 +8,7 @@ class GetMovieState {
   final String error;
 
   // ignore: avoid_positional_boolean_parameters
-  GetMovieState(this.loading, this.detailedMovie, this.error);
+  const GetMovieState(this.loading, this.detailedMovie, this.error);
 
   factory GetMovieState.initial() =>
       GetMovieState(false, DetailedMovie.createInitDetailedMovie(), '');
@@ -22,7 +22,7 @@ class GetMovieState {
       );
 
   @override
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       identical(this, other) ||
       other is GetMovieState &&
           runtimeType == other.runtimeType &&

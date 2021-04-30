@@ -32,8 +32,7 @@ class AppState {
           getMovieState: getMovieState ?? this.getMovieState);
 
   @override
-  // ignore: type_annotate_public_apis
-  bool operator ==(other) =>
+  bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppState &&
           runtimeType == other.runtimeType &&

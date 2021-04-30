@@ -1,7 +1,7 @@
 import 'package:movier/models/detailed_movie.dart';
 
 class GetMovieAction {
-  final String id;
+  final int id;
 
   const GetMovieAction({required this.id});
 

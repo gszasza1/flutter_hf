@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'detailed_movie_page.dart';
 import 'latest_movie_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +17,6 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: const LatestMovie());
+        body: LatestMovie());
   }
 }

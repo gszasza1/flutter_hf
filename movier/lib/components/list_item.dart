@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movier/models/movie_result.dart';
-import 'package:movier/pages/detailed_movie_page.dart';
 
 class ListItemWidget extends StatelessWidget {
   const ListItemWidget({Key? key, required this.movieResult}) : super(key: key);

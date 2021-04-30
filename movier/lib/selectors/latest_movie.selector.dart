@@ -21,8 +21,11 @@ class LatestMovieSelector {
 
   factory LatestMovieSelector.fromStore(Store<AppState> store) {
     return LatestMovieSelector(
-      loading: store.state.latestMovieState.loading,
-        movieList: store.state.latestMovieState.movieList.results.where((element) => element.title.contains(store.state.latestMovieState.searchText)).toList(),
+        loading: store.state.latestMovieState.loading,
+        movieList: store.state.latestMovieState.movieList.results
+            .where((element) =>
+                element.title.contains(store.state.latestMovieState.searchText))
+            .toList(),
         getLatestMovieList: () {
           store.dispatch(LatestMovieAction());
         },

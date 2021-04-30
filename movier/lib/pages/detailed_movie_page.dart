@@ -8,7 +8,7 @@ import 'package:movier/state/appstate.state.dart';
 
 class DetailedMovie extends StatelessWidget {
   const DetailedMovie({Key? key, required this.id}) : super(key: key);
-  final String id;
+  final int id;
   CachedNetworkImage show(DetailedMovieSelector vm) {
     final resolver = CachedNetworkImage(
         imageUrl: "https://imgflip.com/s/meme/Jackie-Chan-WTF.jpg",
@@ -68,69 +68,90 @@ class DetailedMovie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, DetailedMovieSelector>(
-        converter: (store) => DetailedMovieSelector.fromStore(
-              store,
-            ),
+        converter: (store) => DetailedMovieSelector.fromStore(store, id),
         builder: (context, vm) {
           return StatefulWrapper(
               onInit: () {
-                vm.getMovieById("1");
+                vm.getMovieById(id);
               },
               child: Scaffold(
+                  appBar: AppBar(
+                    leading: IconButton(
+                      icon: Icon(Icons.arrow_back, color: Colors.black),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ),
                   body: SingleChildScrollView(
                       child: Column(
-                children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      alignment: Alignment.topCenter,
-                      child: show(vm)),
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      vm.detailedMovie.title,
-                      textAlign: TextAlign.start,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    color: const Color(0xFFf1f1f2),
-                    child: Text(vm.detailedMovie.overview ?? "No description"),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      children: [
-                        const Text(
-                          "About",
+                    children: [
+                      Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          alignment: Alignment.topCenter,
+                          child: show(vm)),
+                      Container(
+                        margin: const EdgeInsets.all(10),
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          vm.detailedMovie.title,
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
                         ),
-                      ],
-                    ),
-                  ),
-                  createItem("Release", vm.detailedMovie.release_date, context),
-                  createItem("Popularity",
-                      vm.detailedMovie.popularity.toString(), context),
-                  createItem(
-                      "Budget", "${vm.detailedMovie.budget} Dollar", context),
-                  createItem(
-                      "Total vote", "${vm.detailedMovie.vote_count}", context),
-                  createItem("Original Language",
-                      "${vm.detailedMovie.original_language}", context),
-                  createItem(
-                      "Revenue", "${vm.detailedMovie.revenue} Dollar", context),
-                  createItem("Imdb Id", "${vm.detailedMovie.imdb_id}", context),
-                  createItem("Status", "${vm.detailedMovie.status}", context),
-                ],
-              ))));
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        color: const Color(0xFFf1f1f2),
+                        child:
+                            Text(vm.detailedMovie.overview ?? "No description"),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.all(10),
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          children: [
+                            const Expanded(
+                              flex: 1,
+                              child: Text(
+                                "About",
+                                textAlign: TextAlign.start,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            if (vm.inList)
+                              Expanded(
+                                child: IconButton(
+                                  icon: const Icon(Icons.add),
+                                  tooltip: 'Add to favourite',
+                                  onPressed: () {
+                                    vm.addFavouriteMovie(vm.detailedMovie);
+                                  },
+                                ),
+                              )
+                          ],
+                        ),
+                      ),
+                      createItem(
+                          "Release", vm.detailedMovie.release_date, context),
+                      createItem("Popularity",
+                          vm.detailedMovie.popularity.toString(), context),
+                      createItem("Budget", "${vm.detailedMovie.budget} Dollar",
+                          context),
+                      createItem("Total vote", "${vm.detailedMovie.vote_count}",
+                          context),
+                      createItem("Original Language",
+                          "${vm.detailedMovie.original_language}", context),
+                      createItem("Revenue",
+                          "${vm.detailedMovie.revenue} Dollar", context),
+                      createItem(
+                          "Imdb Id", "${vm.detailedMovie.imdb_id}", context),
+                      createItem(
+                          "Status", "${vm.detailedMovie.status}", context),
+                    ],
+                  ))));
         });
   }
 }

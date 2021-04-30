@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movier/pages/detailed_movie_page.dart';
+import 'package:movier/pages/favourite_movie.dart';
 import 'package:movier/pages/latest_movie_page.dart';
 import 'package:redux/redux.dart';
 
-import 'config/configure_web.dart'
-    if (dart.library.html) 'config/configure_nonweb.dart';
 import 'config/saga_config.dart';
 import 'state/appstate.state.dart';
 
 void main() {
-  configureApp();
+  // configureApp();
   runApp(Movier(store: configureStore()));
 }
 
@@ -30,20 +29,23 @@ class Movier extends StatelessWidget {
         onGenerateRoute: (settings) {
           // Handle '/'
           if (settings.name == '/') {
-            return MaterialPageRoute(builder: (context) => const LatestMovie());
+            return MaterialPageRoute(builder: (context) => LatestMovie());
+          }
+          if (settings.name == '/favourite') {
+            return MaterialPageRoute(builder: (context) => FavouriteMovie());
           }
 
           // Handle '/details/:id'
           final uri = Uri.parse(settings.name!);
           if (uri.pathSegments.length == 2 &&
               uri.pathSegments.first == 'movie') {
-            final id = uri.pathSegments[1];
+            final id = int.parse(uri.pathSegments[1]);
             return MaterialPageRoute(
                 builder: (context) => DetailedMovie(id: id));
           }
 
-          return MaterialPageRoute(builder: (context) => const LatestMovie());
+          return MaterialPageRoute(builder: (context) => LatestMovie());
         },
-        home: const LatestMovie(),
+        home: LatestMovie(),
       ));
 }
