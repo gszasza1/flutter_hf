@@ -4,9 +4,11 @@ import 'package:movier/pages/detailed_movie_page.dart';
 import 'package:movier/pages/latest_movie_page.dart';
 import 'package:redux/redux.dart';
 
-import 'config/configure_web.dart' if(dart.library.html) 'config/configure_nonweb.dart';
+import 'config/configure_web.dart'
+    if (dart.library.html) 'config/configure_nonweb.dart';
 import 'config/saga_config.dart';
 import 'state/appstate.state.dart';
+
 void main() {
   configureApp();
   runApp(Movier(store: configureStore()));

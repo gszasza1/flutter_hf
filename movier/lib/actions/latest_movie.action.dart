@@ -12,7 +12,7 @@ class LatestMovieSuccessAction {
   LatestMovieSuccessAction({required this.movieList});
   @override
   String toString() {
-    return 'LatestMovieSuccessAction { isSuccess: $movieList }';
+    return 'LatestMovieSuccessAction { movieList: $movieList }';
   }
 }
 
@@ -24,5 +24,16 @@ class LatestMovieFailedAction {
   @override
   String toString() {
     return 'LatestMovieFailedAction { error: $error }';
+  }
+}
+
+class ChangeMovieText {
+  final String searchText;
+
+  ChangeMovieText({required this.searchText});
+
+  @override
+  String toString() {
+    return 'ChangeMovieText { searchText: $searchText }';
   }
 }

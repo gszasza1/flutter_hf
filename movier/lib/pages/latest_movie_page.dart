@@ -20,15 +20,20 @@ class LatestMovie extends StatelessWidget {
                 return vm.getLatestMovieList();
               },
               child: Scaffold(
-                  body: SingleChildScrollView(
+                  body: Container(
+                      height: MediaQuery.of(context).size.height,
                       child: Column(children: [
-                ListView(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    children: vm.movieList.results.map((e) {
-                      return ListItemWidget(movieResult: e);
-                    }).toList())
-              ]))));
+                        TextFormField(
+                            autofocus: true,
+                            onChanged: (e) => vm.onMovieSearchChange(e)),
+                        Flexible(
+                            child: SingleChildScrollView(
+                                child: ListView(
+                                    shrinkWrap: true,
+                                    children: vm.movieList.map((e) {
+                                      return ListItemWidget(movieResult: e);
+                                    }).toList()))),
+                      ]))));
         });
   }
 }

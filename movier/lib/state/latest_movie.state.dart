@@ -6,16 +6,20 @@ class LatestMovieState {
   final bool loading;
   final String error;
   final MovieList movieList;
+  final String searchText;
 
-  LatestMovieState(this.loading, this.error, this.movieList);
+  LatestMovieState(this.loading, this.error, this.movieList, this.searchText);
 
   factory LatestMovieState.initial() =>
-      LatestMovieState(false, '', MovieList.createInitMovieList());
+      LatestMovieState(false, '', MovieList.createInitMovieList(), "");
 
   LatestMovieState copyWith(
-          {bool? loading, String? error, MovieList? movieList}) =>
+          {bool? loading,
+          String? error,
+          MovieList? movieList,
+          String? searchText}) =>
       LatestMovieState(loading ?? this.loading, error ?? this.error,
-          movieList ?? this.movieList);
+          movieList ?? this.movieList, searchText ?? this.searchText);
 
   @override
   bool operator ==(other) =>
