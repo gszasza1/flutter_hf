@@ -15,7 +15,7 @@ class DetailedMovie extends StatelessWidget {
         imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
               image: DecorationImage(
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.fitHeight,
                 alignment: Alignment.topCenter,
                 image: imageProvider,
               ),
@@ -25,7 +25,7 @@ class DetailedMovie extends StatelessWidget {
       if (vm.detailedMovie.poster_path != null &&
           vm.detailedMovie.poster_path!.isNotEmpty) {
         imageUrl =
-            "https://api.themoviedb.org/3${vm.detailedMovie.poster_path}?api_key=${API_KEY}";
+            "https://image.tmdb.org/t/p/w500${vm.detailedMovie.poster_path}?api_key=${API_KEY}";
       } else {
         throw Exception("Empty image url");
       }
@@ -36,7 +36,7 @@ class DetailedMovie extends StatelessWidget {
           imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                 image: DecorationImage(
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.fitHeight,
                   alignment: Alignment.topCenter,
                   image: imageProvider,
                 ),
@@ -77,16 +77,16 @@ class DetailedMovie extends StatelessWidget {
               child: Scaffold(
                   appBar: AppBar(
                     leading: IconButton(
-                      icon: Icon(Icons.arrow_back, color: Colors.black),
+                      icon: const Icon(Icons.arrow_back, color: Colors.black),
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                   ),
-                  body: SingleChildScrollView(
+                  body: vm.loading ? Center(heightFactor:MediaQuery.of(context).size.height,widthFactor:MediaQuery.of(context).size.width , child:CircularProgressIndicator()): SingleChildScrollView(
                       child: Column(
                     children: [
                       Container(
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.3,
+                          height: MediaQuery.of(context).size.height * 0.5,
                           alignment: Alignment.topCenter,
                           child: show(vm)),
                       Container(

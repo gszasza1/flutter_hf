@@ -10,7 +10,6 @@ class AddFavouriteMovieAction {
   }
 }
 
-
 class DeleteFavouriteMovieAction {
   final int id;
 

@@ -25,7 +25,7 @@ class ListItemWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(movieResult.title,
+              Text(movieResult.title ?? "Unknown title",
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -35,7 +35,7 @@ class ListItemWidget extends StatelessWidget {
                 children: [
                   Expanded(
                       child: Text(
-                    movieResult.release_date,
+                    movieResult.release_date ?? "Unknown date",
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
                   )),

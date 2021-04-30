@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:movier/models/movie_list.dart';
 
 class SearchMovieAction {

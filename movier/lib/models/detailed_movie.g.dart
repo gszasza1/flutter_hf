@@ -10,7 +10,10 @@ DetailedMovie _$DetailedMovieFromJson(Map<String, dynamic> json) {
   return DetailedMovie(
     adult: json['adult'] as bool,
     backdrop_path: json['backdrop_path'] as String?,
-    belongs_to_collection: json['belongs_to_collection'] as String?,
+    belongs_to_collection: json['belongs_to_collection'] == null
+        ? null
+        : Collection.fromJson(
+            json['belongs_to_collection'] as Map<String, dynamic>),
     budget: json['budget'] as int,
     genres: (json['genres'] as List<dynamic>)
         .map((e) => Genres.fromJson(e as Map<String, dynamic>))

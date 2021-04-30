@@ -9,7 +9,7 @@ import 'package:movier/extensions/debounce.dart';
 
 class LatestMovie extends StatelessWidget {
   LatestMovie({Key? key}) : super(key: key);
-  final _debouncer = Debounce(const Duration(milliseconds: 500));
+  final _debouncer = Debouncer(milliseconds: 500);
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,9 @@ class LatestMovie extends StatelessWidget {
                       height: MediaQuery.of(context).size.height,
                       child: Column(children: [
                         TextFormField(
-                            onChanged: (e) => _debouncer
-                                .call(() => vm.onMovieSearchChange(e))),
+                            onChanged: (e) => _debouncer.call(() => e.isEmpty
+                                ? vm.getLatestMovieList()
+                                : vm.onMovieSearchChange(e))),
                         Flexible(
                             child: SingleChildScrollView(
                                 child: ListView(

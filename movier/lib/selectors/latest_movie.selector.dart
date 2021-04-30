@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movier/actions/latest_movie.action.dart';
+import 'package:movier/actions/search_movie.action.dart';
 import 'package:movier/models/movie_list.dart';
 import 'package:movier/models/movie_result.dart';
 import 'package:movier/state/appstate.state.dart';
@@ -22,15 +23,12 @@ class LatestMovieSelector {
   factory LatestMovieSelector.fromStore(Store<AppState> store) {
     return LatestMovieSelector(
         loading: store.state.latestMovieState.loading,
-        movieList: store.state.latestMovieState.movieList.results
-            .where((element) =>
-                element.title.contains(store.state.latestMovieState.searchText))
-            .toList(),
+        movieList: store.state.latestMovieState.movieList.results,
         getLatestMovieList: () {
           store.dispatch(LatestMovieAction());
         },
         onMovieSearchChange: (String e) {
-          store.dispatch(ChangeMovieText(searchText: e));
+          store.dispatch(SearchMovieAction(e));
         });
   }
 

@@ -5,16 +5,16 @@ part 'movie_result.g.dart';
 
 @JsonSerializable()
 class MovieResult {
-  String poster_path;
+  String? poster_path;
   bool adult;
-  String overview;
-  String release_date;
+  String? overview;
+  String? release_date;
   List<int> genre_ids;
   int id;
-  String original_title;
-  String original_language;
-  String title;
-  String backdrop_path;
+  String? original_title;
+  String? original_language;
+  String? title;
+  String? backdrop_path;
   double popularity;
   int vote_count;
   bool video;

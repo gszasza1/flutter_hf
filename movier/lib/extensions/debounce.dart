@@ -1,21 +1,23 @@
+import 'package:flutter/foundation.dart';
 import 'dart:async';
 
-class Debounce {
-  final Duration delay;
+class Debouncer {
+  final int milliseconds;
   Timer? _timer;
 
-  Debounce(this.delay);
+  Debouncer({required this.milliseconds});
 
-  Function call(Function callback) {
-    return (args) {
-      _timer?.cancel();
-      _timer = Timer(delay, () => callback(args));
-    };
+  call(VoidCallback action) {
+    if (_timer != null) {
+      _timer!.cancel();
+    }
+
+    _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
 
   dispose() {
     if (_timer != null) {
-      _timer?.cancel();
+      _timer!.cancel();
     }
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:json_annotation/json_annotation.dart';
+import 'package:movier/models/collection.dart';
 
 import 'genre.dart';
 import 'production_companies.dart';
@@ -12,7 +13,7 @@ part 'detailed_movie.g.dart';
 class DetailedMovie {
   bool adult;
   String? backdrop_path = "";
-  String? belongs_to_collection = "";
+  Collection? belongs_to_collection;
   int budget;
   List<Genres> genres;
   String? homepage = "";
@@ -67,7 +68,7 @@ class DetailedMovie {
     return DetailedMovie(
         adult: false,
         backdrop_path: "",
-        belongs_to_collection: "",
+        belongs_to_collection: null,
         budget: 0,
         genres: [],
         homepage: "",

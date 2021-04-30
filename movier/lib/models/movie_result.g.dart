@@ -8,16 +8,16 @@ part of 'movie_result.dart';
 
 MovieResult _$MovieResultFromJson(Map<String, dynamic> json) {
   return MovieResult(
-    json['poster_path'] as String,
+    json['poster_path'] as String?,
     json['adult'] as bool,
-    json['overview'] as String,
-    json['release_date'] as String,
+    json['overview'] as String?,
+    json['release_date'] as String?,
     (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
     json['id'] as int,
-    json['original_title'] as String,
-    json['original_language'] as String,
-    json['title'] as String,
-    json['backdrop_path'] as String,
+    json['original_title'] as String?,
+    json['original_language'] as String?,
+    json['title'] as String?,
+    json['backdrop_path'] as String?,
     (json['popularity'] as num).toDouble(),
     json['vote_count'] as int,
     json['video'] as bool,

@@ -13,13 +13,18 @@ final favouritemoviesReducer = combineReducers<FavouriteMovieState>([
 ]);
 
 FavouriteMovieState _addFavouriteMovieDone(
-        FavouriteMovieState state, AddFavouriteMovieAction action){
-final inList = state.movieList.where((element) => element.id != action.movie.id).toList().isNotEmpty;
-  return inList?state:  state.copyWith(movieList: [
-      ...state.movieList,
-      Converter.movieResultToDetailedMovie(action.movie)
-    ]);
-        }
+    FavouriteMovieState state, AddFavouriteMovieAction action) {
+  final inList = state.movieList
+      .where((element) => element.id == action.movie.id)
+      .toList()
+      .isNotEmpty;
+  return inList
+      ? state
+      : state.copyWith(movieList: [
+          ...state.movieList,
+          Converter.movieResultToDetailedMovie(action.movie)
+        ]);
+}
 
 FavouriteMovieState _deleteFavouriteMovie(
     FavouriteMovieState state, DeleteFavouriteMovieAction action) {

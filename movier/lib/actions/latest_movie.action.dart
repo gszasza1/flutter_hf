@@ -26,14 +26,3 @@ class LatestMovieFailedAction {
     return 'LatestMovieFailedAction { error: $error }';
   }
 }
-
-class ChangeMovieText {
-  final String searchText;
-
-  ChangeMovieText({required this.searchText});
-
-  @override
-  String toString() {
-    return 'ChangeMovieText { searchText: $searchText }';
-  }
-}

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:movier/actions/latest_movie.action.dart';
 import 'package:movier/extensions/json_mapper.dart';
 import 'package:movier/models/movie_list.dart';
@@ -7,8 +8,7 @@ import 'package:redux_saga/redux_saga.dart';
 getMovieList({dynamic action}) sync* {
   yield Try(() sync* {
     final mockdata = Result<MovieList>();
-    yield Call(getMockData, result: mockdata);
-    yield Delay(const Duration(seconds: 1));
+    yield Call(getData, result: mockdata);
     if (mockdata.value == null) {
       throw Exception(mockdata.toString());
     }
@@ -27,3 +27,11 @@ getMovieListSaga() sync* {
 Future<MovieList> getMockData() async =>
     parseJsonFromAssets('mock/movie_list.mock.json')
         .then((value) => MovieList.fromJson(value));
+
+Future getData() async {
+  Response response = await Dio()
+      .get('https://api.themoviedb.org/3/movie/popular', queryParameters: {
+    'api_key': "5637779ad0397a76e1cddf7bc16c3a4d",
+  });
+  return MovieList.fromJson(response.data as Map<String, dynamic>);
+}

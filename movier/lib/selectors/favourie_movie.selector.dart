@@ -22,10 +22,14 @@ class FavouriteMovieSelector {
   factory FavouriteMovieSelector.fromStore(Store<AppState> store) {
     return FavouriteMovieSelector(
         error: store.state.favouriteMovieState.error,
-        favouriteList: store.state.favouriteMovieState.movieList
-            .where((element) =>
-                element.title.contains(store.state.latestMovieState.searchText))
-            .toList(),
+        favouriteList: store.state.favouriteMovieState.searchText.isNotEmpty
+            ? store.state.favouriteMovieState.movieList
+                .where((element) =>
+                    element.title != null &&
+                    element.title!.toLowerCase()
+                        .contains(store.state.favouriteMovieState.searchText.toLowerCase()))
+                .toList()
+            : store.state.favouriteMovieState.movieList,
         deleteFavouriteMovie: (int id) {
           store.dispatch(DeleteFavouriteMovieAction(
             id: id,

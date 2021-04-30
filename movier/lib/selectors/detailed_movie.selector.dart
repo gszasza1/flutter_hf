@@ -12,17 +12,20 @@ class DetailedMovieSelector {
   final Function getMovieById;
   final Function(DetailedMovie) addFavouriteMovie;
   final bool inList;
+  final bool loading;
 
   const DetailedMovieSelector({
     required this.detailedMovie,
     required this.getMovieById,
     required this.addFavouriteMovie,
     required this.inList,
+    required this.loading,
   });
 
   factory DetailedMovieSelector.fromStore(Store<AppState> store, int id) {
     return DetailedMovieSelector(
       detailedMovie: store.state.getMovieState.detailedMovie,
+      loading: store.state.getMovieState.loading,
       inList: store.state.favouriteMovieState.movieList
           .where((element) => element.id == id)
           .toList()
