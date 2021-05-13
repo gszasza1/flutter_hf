@@ -19,37 +19,43 @@ class LatestMovie extends StatelessWidget {
             ),
         builder: (context, vm) {
           return StatefulWrapper(
-              onDispose: () {
-                _debouncer.dispose();
-              },
-              onInit: () {
-                return vm.getLatestMovieList();
-              },
-              child: Scaffold(
-                  bottomNavigationBar: SingleBottomNavigation(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/favourite',
-                      );
-                    },
-                    icon: Icon(Icons.favorite),
+            onDispose: () {
+              _debouncer.dispose();
+            },
+            onInit: () {
+              return vm.getLatestMovieList();
+            },
+            child: Scaffold(
+              bottomNavigationBar: SingleBottomNavigation(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/favourite',
+                  );
+                },
+                icon: const Icon(Icons.favorite),
+              ),
+              body: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Column(children: [
+                  TextFormField(
+                      onChanged: (e) => _debouncer.call(() => e.isEmpty
+                          ? vm.getLatestMovieList()
+                          : vm.onMovieSearchChange(e))),
+                  Flexible(
+                    child: SingleChildScrollView(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: vm.movieList.map((e) {
+                          return ListItemWidget(movieResult: e);
+                        }).toList(),
+                      ),
+                    ),
                   ),
-                  body: Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: Column(children: [
-                        TextFormField(
-                            onChanged: (e) => _debouncer.call(() => e.isEmpty
-                                ? vm.getLatestMovieList()
-                                : vm.onMovieSearchChange(e))),
-                        Flexible(
-                            child: SingleChildScrollView(
-                                child: ListView(
-                                    shrinkWrap: true,
-                                    children: vm.movieList.map((e) {
-                                      return ListItemWidget(movieResult: e);
-                                    }).toList()))),
-                      ]))));
+                ]),
+              ),
+            ),
+          );
         });
   }
 }

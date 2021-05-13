@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movier/actions/latest_movie.action.dart';
 import 'package:movier/actions/search_movie.action.dart';
-import 'package:movier/models/movie_list.dart';
 import 'package:movier/models/movie_result.dart';
 import 'package:movier/state/appstate.state.dart';
 import 'package:redux/redux.dart';

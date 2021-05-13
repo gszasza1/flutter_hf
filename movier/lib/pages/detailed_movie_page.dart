@@ -81,77 +81,89 @@ class DetailedMovie extends StatelessWidget {
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                   ),
-                  body: vm.loading ? Center(heightFactor:MediaQuery.of(context).size.height,widthFactor:MediaQuery.of(context).size.width , child:CircularProgressIndicator()): SingleChildScrollView(
-                      child: Column(
-                    children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.5,
-                          alignment: Alignment.topCenter,
-                          child: show(vm)),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                          vm.detailedMovie.title,
-                          textAlign: TextAlign.start,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        color: const Color(0xFFf1f1f2),
-                        child:
-                            Text(vm.detailedMovie.overview ?? "No description"),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        width: MediaQuery.of(context).size.width,
-                        child: Row(
+                  body: vm.loading
+                      ? Center(
+                          heightFactor: MediaQuery.of(context).size.height,
+                          widthFactor: MediaQuery.of(context).size.width,
+                          child: const CircularProgressIndicator())
+                      : SingleChildScrollView(
+                          child: Column(
                           children: [
-                            const Expanded(
-                              flex: 1,
+                            Container(
+                                width: MediaQuery.of(context).size.width,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.5,
+                                alignment: Alignment.topCenter,
+                                child: show(vm)),
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              width: MediaQuery.of(context).size.width,
                               child: Text(
-                                "About",
+                                vm.detailedMovie.title,
                                 textAlign: TextAlign.start,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            if (vm.inList)
-                              Expanded(
-                                child: IconButton(
-                                  icon: const Icon(Icons.add),
-                                  tooltip: 'Add to favourite',
-                                  onPressed: () {
-                                    vm.addFavouriteMovie(vm.detailedMovie);
-                                  },
-                                ),
-                              )
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              color: const Color(0xFFf1f1f2),
+                              child: Text(vm.detailedMovie.overview ??
+                                  "No description"),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              width: MediaQuery.of(context).size.width,
+                              child: Row(
+                                children: [
+                                  const Expanded(
+                                    flex: 1,
+                                    child: Text(
+                                      "About",
+                                      textAlign: TextAlign.start,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  if (vm.inList)
+                                    Expanded(
+                                      child: IconButton(
+                                        icon: const Icon(Icons.add),
+                                        tooltip: 'Add to favourite',
+                                        onPressed: () {
+                                          vm.addFavouriteMovie(
+                                              vm.detailedMovie);
+                                        },
+                                      ),
+                                    )
+                                ],
+                              ),
+                            ),
+                            createItem("Release", vm.detailedMovie.release_date,
+                                context),
+                            createItem(
+                                "Popularity",
+                                vm.detailedMovie.popularity.toString(),
+                                context),
+                            createItem("Budget",
+                                "${vm.detailedMovie.budget} Dollar", context),
+                            createItem("Total vote",
+                                "${vm.detailedMovie.vote_count}", context),
+                            createItem(
+                                "Original Language",
+                                "${vm.detailedMovie.original_language}",
+                                context),
+                            createItem("Revenue",
+                                "${vm.detailedMovie.revenue} Dollar", context),
+                            createItem("Imdb Id", "${vm.detailedMovie.imdb_id}",
+                                context),
+                            createItem("Status", "${vm.detailedMovie.status}",
+                                context),
                           ],
-                        ),
-                      ),
-                      createItem(
-                          "Release", vm.detailedMovie.release_date, context),
-                      createItem("Popularity",
-                          vm.detailedMovie.popularity.toString(), context),
-                      createItem("Budget", "${vm.detailedMovie.budget} Dollar",
-                          context),
-                      createItem("Total vote", "${vm.detailedMovie.vote_count}",
-                          context),
-                      createItem("Original Language",
-                          "${vm.detailedMovie.original_language}", context),
-                      createItem("Revenue",
-                          "${vm.detailedMovie.revenue} Dollar", context),
-                      createItem(
-                          "Imdb Id", "${vm.detailedMovie.imdb_id}", context),
-                      createItem(
-                          "Status", "${vm.detailedMovie.status}", context),
-                    ],
-                  ))));
+                        ))));
         });
   }
 }

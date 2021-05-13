@@ -19,34 +19,39 @@ class FavouriteMovie extends StatelessWidget {
             ),
         builder: (context, vm) {
           return StatefulWrapper(
-              onDispose: () {
-                _debouncer.dispose();
-              },
-              child: Scaffold(
-                  bottomNavigationBar: SingleBottomNavigation(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        '/',
-                      );
-                    },
-                    icon: Icon(Icons.list),
+            onDispose: () {
+              _debouncer.dispose();
+            },
+            child: Scaffold(
+              bottomNavigationBar: SingleBottomNavigation(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/',
+                  );
+                },
+                icon: const Icon(Icons.list),
+              ),
+              body: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Column(children: [
+                  TextFormField(
+                      onChanged: (e) =>
+                          _debouncer.call(() => vm.searchFavouriteMovie(e))),
+                  Flexible(
+                    child: SingleChildScrollView(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: vm.favouriteList.map((e) {
+                          return FavouriteItemWidget(movieResult: e);
+                        }).toList(),
+                      ),
+                    ),
                   ),
-                  body: Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: Column(children: [
-                        TextFormField(
-                            onChanged: (e) => _debouncer
-                                .call(() => vm.searchFavouriteMovie(e))),
-                        Flexible(
-                            child: SingleChildScrollView(
-                                child: ListView(
-                                    shrinkWrap: true,
-                                    children: vm.favouriteList.map((e) {
-                                      return FavouriteItemWidget(
-                                          movieResult: e);
-                                    }).toList()))),
-                      ]))));
+                ]),
+              ),
+            ),
+          );
         });
   }
 }

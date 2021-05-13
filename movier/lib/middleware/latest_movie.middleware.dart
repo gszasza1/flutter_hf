@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:movier/actions/latest_movie.action.dart';
 import 'package:movier/extensions/json_mapper.dart';
 import 'package:movier/models/movie_list.dart';
+import 'package:movier/network/base.dart';
 import 'package:redux_saga/redux_saga.dart';
 
 // ignore: always_declare_return_types
@@ -29,9 +30,7 @@ Future<MovieList> getMockData() async =>
         .then((value) => MovieList.fromJson(value));
 
 Future getData() async {
-  Response response = await Dio()
-      .get('https://api.themoviedb.org/3/movie/popular', queryParameters: {
-    'api_key': "5637779ad0397a76e1cddf7bc16c3a4d",
-  });
+  final Response response = await DioFactory()
+      .get('/movie/popular');
   return MovieList.fromJson(response.data as Map<String, dynamic>);
 }

@@ -9,7 +9,6 @@ import 'config/saga_config.dart';
 import 'state/appstate.state.dart';
 
 void main() {
-  // configureApp();
   runApp(Movier(store: configureStore()));
 }
 
@@ -19,33 +18,39 @@ class Movier extends StatelessWidget {
   const Movier({required this.store}) : super();
   @override
   Widget build(BuildContext context) => StoreProvider(
-      store: store,
-      child: MaterialApp(
-        title: 'Movie',
-        theme: ThemeData(
-          primarySwatch: Colors.green,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        onGenerateRoute: (settings) {
-          // Handle '/'
-          if (settings.name == '/') {
+        store: store,
+        child: MaterialApp(
+          title: 'Movie',
+          theme: ThemeData(
+            primarySwatch: Colors.green,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          onGenerateRoute: (settings) {
+            // Handle '/'
+            if (settings.name == '/') {
+              return MaterialPageRoute(
+                  settings: const RouteSettings(name: "/"),
+                  builder: (context) => LatestMovie());
+            }
+            if (settings.name == '/favourite') {
+              return MaterialPageRoute(
+                  settings: const RouteSettings(name: "/favourite"),
+                  builder: (context) => FavouriteMovie());
+            }
+
+            // Handle '/details/:id'
+            final uri = Uri.parse(settings.name!);
+            if (uri.pathSegments.length == 2 &&
+                uri.pathSegments.first == 'movie') {
+              final id = int.parse(uri.pathSegments[1]);
+              return MaterialPageRoute(
+                  settings: RouteSettings(name: "/movie/$id"),
+                  builder: (context) => DetailedMovie(id: id));
+            }
+
             return MaterialPageRoute(builder: (context) => LatestMovie());
-          }
-          if (settings.name == '/favourite') {
-            return MaterialPageRoute(builder: (context) => FavouriteMovie());
-          }
-
-          // Handle '/details/:id'
-          final uri = Uri.parse(settings.name!);
-          if (uri.pathSegments.length == 2 &&
-              uri.pathSegments.first == 'movie') {
-            final id = int.parse(uri.pathSegments[1]);
-            return MaterialPageRoute(
-                builder: (context) => DetailedMovie(id: id));
-          }
-
-          return MaterialPageRoute(builder: (context) => LatestMovie());
-        },
-        home: LatestMovie(),
-      ));
+          },
+          home: LatestMovie(),
+        ),
+      );
 }

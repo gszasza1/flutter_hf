@@ -15,40 +15,41 @@ class ListItemWidget extends StatelessWidget {
         );
       },
       child: Container(
-          padding:
-              const EdgeInsets.only(bottom: 20, left: 10, right: 10, top: 20),
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 1.0, color: Color(0xFFFFF3F3F3)),
-            ),
+        padding:
+            const EdgeInsets.only(bottom: 20, left: 10, right: 10, top: 20),
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Color(0xfffff3f3f3)),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(movieResult.title ?? "Unknown title",
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(movieResult.title ?? "Unknown title",
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            Row(
+              children: [
+                Expanded(
+                    child: Text(
+                  movieResult.release_date ?? "Unknown date",
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold)),
-              Container(
-                  child: Row(
-                children: [
-                  Expanded(
-                      child: Text(
-                    movieResult.release_date ?? "Unknown date",
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.ellipsis,
-                  )),
-                  Expanded(
-                      child: Text(
+                )),
+                Expanded(
+                  child: Text(
                     movieResult.popularity.toString(),
                     textAlign: TextAlign.end,
                     overflow: TextOverflow.ellipsis,
-                  )),
-                ],
-              ))
-            ],
-          )),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

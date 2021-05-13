@@ -7,7 +7,8 @@ class Debouncer {
 
   Debouncer({required this.milliseconds});
 
-  call(VoidCallback action) {
+  // ignore: type_annotate_public_apis
+  call(VoidCallback action) async {
     if (_timer != null) {
       _timer!.cancel();
     }
@@ -15,7 +16,8 @@ class Debouncer {
     _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
 
-  dispose() {
+  // ignore: always_declare_return_types
+  dispose() async {
     if (_timer != null) {
       _timer!.cancel();
     }

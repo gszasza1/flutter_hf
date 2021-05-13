@@ -3,6 +3,7 @@ import 'package:movier/actions/get_movie.action.dart';
 import 'package:movier/extensions/json_mapper.dart';
 import 'package:movier/models/detailed_movie.dart';
 
+import 'package:movier/network/base.dart';
 import 'package:redux_saga/redux_saga.dart';
 
 // ignore: always_declare_return_types
@@ -32,9 +33,7 @@ Future<DetailedMovie> getMockData() async =>
         .then((value) => DetailedMovie.fromJson(value));
 
 Future getData(int id) async {
-  final Response response = await Dio()
-      .get('https://api.themoviedb.org/3/movie/$id', queryParameters: {
-    'api_key': "5637779ad0397a76e1cddf7bc16c3a4d",
-  });
+  final Response response = await DioFactory()
+      .get('/movie/$id');
   return DetailedMovie.fromJson(response.data as Map<String, dynamic>);
 }

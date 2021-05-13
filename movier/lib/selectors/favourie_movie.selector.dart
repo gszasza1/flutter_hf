@@ -26,8 +26,9 @@ class FavouriteMovieSelector {
             ? store.state.favouriteMovieState.movieList
                 .where((element) =>
                     element.title != null &&
-                    element.title!.toLowerCase()
-                        .contains(store.state.favouriteMovieState.searchText.toLowerCase()))
+                    element.title!.toLowerCase().contains(store
+                        .state.favouriteMovieState.searchText
+                        .toLowerCase()))
                 .toList()
             : store.state.favouriteMovieState.movieList,
         deleteFavouriteMovie: (int id) {

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'latest_movie_page.dart';
+
+import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
